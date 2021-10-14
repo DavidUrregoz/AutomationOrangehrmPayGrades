@@ -66,7 +66,7 @@ public class OrangehrmPayGrades extends CommonActionsOnPages{
     private WebElement maxSalary;
 
 
-    @FindBy(id = "addbutton")
+    @FindBy(id = "btnSaveCurrency")
     @CacheLookup
     private WebElement btnGuardar;
 
@@ -127,7 +127,7 @@ public class OrangehrmPayGrades extends CommonActionsOnPages{
             withExplicitWaitTypeInto(maxSalary, orangehrmPayGradesModel.getSalarioMaximo());
             withExplicitWaitTypeInto(maxSalary, Keys.TAB);
 
-            scrollTo(btnGuardar);
+            //scrollTo(btnGuardar);
             withExplicitWaitClickOn(btnGuardar);
 
             //*[@id="resultTable"]/tbody/tr[1]/td[2]/a

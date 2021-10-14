@@ -67,7 +67,7 @@ public class PayGradesStepDefinition extends WebUI {
     private void dataCorrectConfiguration2(){
         orangehrmPayGradesModel = new OrangehrmPayGradesModel();
         orangehrmPayGradesModel.setGrado(GRADO2);
-        orangehrmPayGradesModel.setMoneda("COP");
+        orangehrmPayGradesModel.setMoneda("MXN");
         orangehrmPayGradesModel.setSalarioMinimo("100000");
         orangehrmPayGradesModel.setSalarioMaximo("150000");
 
