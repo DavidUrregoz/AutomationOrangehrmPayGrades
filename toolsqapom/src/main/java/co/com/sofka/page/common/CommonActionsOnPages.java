@@ -1,7 +1,7 @@
 package co.com.sofka.page.common;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
@@ -23,6 +23,7 @@ public class CommonActionsOnPages extends BaseSikulix{
     public CommonActionsOnPages(WebDriver driver) {
         super();
         try {
+
             if(driver == null)
                 LOGGER.warn(WEBDRIVER_NULL_MESSAGE);
 
@@ -35,6 +36,7 @@ public class CommonActionsOnPages extends BaseSikulix{
     public CommonActionsOnPages(WebDriver driver, int seconds) {
         super();
         try {
+
             if(driver == null)
                 LOGGER.warn(WEBDRIVER_NULL_MESSAGE);
 
@@ -66,113 +68,124 @@ public class CommonActionsOnPages extends BaseSikulix{
         }
     }
 
+    //Init POM with Page Factory.
+    protected void  pageFactoryInitElement(WebDriver driver, Object page){
+        PageFactory.initElements(driver, page);
+    }
+
     //Functions
-    public void doSubmit(By webElement) throws IOException {
+    protected void doSubmit(By webElement) throws IOException {
         driver.findElement(webElement).submit();
     }
 
-    public void doSubmit(WebElement webElement){
+    protected void doSubmit(WebElement webElement){
         webElement.submit();
     }
 
-    public WebElement findElement(By locator){
+    protected WebElement findElement(By locator){
         return driver.findElement(locator);
     }
 
-    public List<WebElement> findElements(By locator){
+    protected List<WebElement> findElements(By locator){
         return driver.findElements(locator);
     }
 
-    public String getText(WebElement webElement){
+    protected String getText(WebElement webElement){
         return webElement.getText();
     }
 
-    public String getText(By locator){
+    protected String getText(By locator){
         return driver.findElement(locator).getText();
     }
 
-    public void typeInto(By locator, CharSequence... keysToSend) throws IOException {
+    protected void typeInto(By locator, CharSequence... keysToSend) throws IOException {
         driver.findElement(locator).sendKeys(keysToSend);
     }
 
-    public void typeInto(WebElement webElement, CharSequence... keysToSend){
+    protected void typeInto(WebElement webElement, CharSequence... keysToSend){
         webElement.sendKeys(keysToSend);
     }
 
-    public void withExplicitWaitTypeInto(By locator, CharSequence... keysToSend){
-        webDriverExplicitWait.until(presenceOfElementLocated(locator)).sendKeys(keysToSend);
-    }
 
-    public void withExplicitWaitTypeInto(WebElement webElement, CharSequence... keysToSend){
-        webDriverExplicitWait.until(elementToBeClickable(webElement)).sendKeys(keysToSend);
-    }
-
-    public void clear(By webElement){
+    protected void clear(By webElement){
         driver.findElement(webElement).clear();
     }
 
-    public void clear(WebElement webElement){
+    protected void clear(WebElement webElement){
         webElement.clear();
     }
 
-    public void clear(By locator, CharSequence... keysToSend){
+    protected void clear(By locator, CharSequence... keysToSend){
         webDriverExplicitWait.until(presenceOfElementLocated(locator)).sendKeys(keysToSend);
     }
 
-    public void clear(WebElement webElement, CharSequence... keysToSend){
+    protected void clear(WebElement webElement, CharSequence... keysToSend){
         webDriverExplicitWait.until(elementToBeClickable(webElement)).sendKeys(keysToSend);
     }
 
-    public void withExplicitWaitClear(By locator){
+    protected void withExplicitWaitClear(By locator){
         webDriverExplicitWait.until(presenceOfElementLocated(locator)).clear();
     }
 
-    public void withExplicitWaitClear(WebElement webElement){
+    protected void withExplicitWaitClear(WebElement webElement){
         webDriverExplicitWait.until(elementToBeClickable(webElement)).clear();
     }
 
-    public void scrollTo(By locator){
+    protected void scrollTo(By locator){
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("arguments[0].scrollIntoView();", driver.findElement(locator));
     }
 
-    public void scrollTo(WebElement webElement){
+    protected void scrollTo(WebElement webElement){
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("arguments[0].scrollIntoView();", webElement);
     }
 
-    public void clickOn(By locator){
+    protected void clickOn(By locator){
         driver.findElement(locator).click();
     }
 
-    public void clickOn(WebElement webElement){
+    protected void clickOn(WebElement webElement){
         webElement.click();
     }
 
-    public void withExplicitWaitClickOn(By locator){
+    protected void withExplicitWaitClickOn(By locator){
         webDriverExplicitWait.until(presenceOfElementLocated(locator)).click();
     }
 
-    public boolean isDisplayed(By locator) throws NoSuchElementException {
+    protected void withExplicitWaitClickOn(WebElement webElement){
+        webDriverExplicitWait.until(elementToBeClickable(webElement)).click();
+    }
+
+    protected void withExplicitWaitTypeInto(By locator, CharSequence... keysToSend){
+        webDriverExplicitWait.until(presenceOfElementLocated(locator)).sendKeys(keysToSend);
+    }
+
+    protected void withExplicitWaitTypeInto(WebElement webElement, CharSequence... keysToSend){
+        webDriverExplicitWait.until(elementToBeClickable(webElement)).sendKeys(keysToSend);
+    }
+
+    protected boolean isDisplayed(By locator) throws NoSuchElementException {
         return driver.findElement(locator).isDisplayed();
     }
 
-    public boolean isDisplayed(WebElement webElement) throws NoSuchElementException {
+    protected boolean isDisplayed(WebElement webElement) throws NoSuchElementException {
         return webElement.isDisplayed();
     }
 
-    public List<WebElement> javascriptExecutorWithReturnCollection(String script){
+    protected List<WebElement> javascriptExecutorWithReturnCollection(String script){
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         return (List<WebElement>)jse.executeScript(script);
     }
 
-    public WebElement javascriptExecutorWithReturn(String script){
+    protected WebElement javascriptExecutorWithReturn(String script){
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         return (WebElement)jse.executeScript(script);
     }
 
-    public void javascriptExecutor(String script){
+    protected void javascriptExecutor(String script){
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript(script);
     }
+
 }
