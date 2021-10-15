@@ -1,11 +1,12 @@
 package co.com.sofka.model.orangehrmpaygrades;
 
+import co.com.sofka.util.Divisas;
 import co.com.sofka.util.Grade;
 import org.python.antlr.ast.Str;
 
 public class OrangehrmPayGradesModel {
     private Grade grado;
-    private String moneda;
+    private Divisas moneda;
     private String salarioMinimo;
     private String salarioMaximo;
 
@@ -18,10 +19,10 @@ public class OrangehrmPayGradesModel {
     }
 
     public String getMoneda() {
-        return moneda;
+        return moneda.getValue();
     }
 
-    public void setMoneda(String moneda) {
+    public void setMoneda(Divisas moneda) {
         this.moneda = moneda;
     }
 

@@ -5,7 +5,8 @@ import co.com.sofka.model.orangehrmpaygrades.OrangehrmPayGradesModel;
 import co.com.sofka.page.orangehrmpaygrades.OrangehrmPayGrades;
 import co.com.sofka.page.orangehrmpaygrades.OrangehtmLogin;
 import co.com.sofka.stepdefinition.setup.WebUI;
-import co.com.sofka.util.Grade;
+
+import co.com.sofka.util.Divisas;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -13,6 +14,7 @@ import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 
 import static co.com.sofka.util.Grade.*;
+import static co.com.sofka.util.Divisas.*;
 
 import static co.com.sofka.util.Seconds.TEN_SECONDS;
 
@@ -57,8 +59,12 @@ public class PayGradesStepDefinition extends WebUI {
     @Then("el sistema debe guardar exitosamente los cambios anteriormente realizados.")
     public void elSistemaDebeGuardarExitosamenteLosCambiosAnteriormenteRealizados() {
         try {
+            Assertions.assertFalse(
+                    orangehrmPayGrades.isSpamMessage(),
+                    ASSERTION_EXCEPTION_MESSAGE
+            );
             Assertions.assertTrue(
-                orangehrmPayGrades.isAddDone("Afghanistan Afghani"),//orangehrmPayGradesModel.getMoneda()),
+                orangehrmPayGrades.isAddDone(orangehrmPayGradesModel.getMoneda()),
                 ASSERTION_EXCEPTION_MESSAGE
             );
             quitDriver();
@@ -79,12 +85,10 @@ public class PayGradesStepDefinition extends WebUI {
     private void dataCorrectConfiguration2(){
         orangehrmPayGradesModel = new OrangehrmPayGradesModel();
         orangehrmPayGradesModel.setGrado(GRADO2);
-        orangehrmPayGradesModel.setMoneda("Colombian Peso");
+        orangehrmPayGradesModel.setMoneda(CAD);
         orangehrmPayGradesModel.setSalarioMinimo("100000");
         orangehrmPayGradesModel.setSalarioMaximo("150000");
 
     }
-
-
 
 }

@@ -49,6 +49,7 @@ public class OrangehrmPayGrades extends CommonActionsOnPages{
 
     private final By grade = By.xpath("//*[@id=\"resultTable\"]/tbody/tr[1]/td[2]/a");
 
+
     @FindBy(id = "btnAddCurrency")
     @CacheLookup
     private WebElement btnAddCurrency;
@@ -69,7 +70,16 @@ public class OrangehrmPayGrades extends CommonActionsOnPages{
     @FindBy(id = "btnSaveCurrency")
     @CacheLookup
     private WebElement btnGuardar;
+
     //For Assertions test case.
+    @FindBy(xpath = "//*[@id=\"addPaneCurrency\"]/li[1]/span[1]")
+    @CacheLookup
+    private WebElement spam;
+
+    public boolean isSpamMessage(){
+        scrollTo(spam);
+        return isDisplayed(spam);
+    }
 
     public boolean isAddDone(String divisa){
         List<WebElement> listaFilas = getResultTable("tblCurrencies");
