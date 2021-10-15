@@ -48,6 +48,7 @@ public class PayGradesStepDefinition extends WebUI {
         try {
             dataCorrectConfiguration2();
             orangehrmPayGrades = new OrangehrmPayGrades(driver,orangehrmPayGradesModel,TEN_SECONDS.getValue());
+
             orangehrmPayGrades.desplegarPayGrades();
         } catch (Exception exception){
             quitDriver();

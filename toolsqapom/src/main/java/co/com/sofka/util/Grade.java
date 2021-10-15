@@ -5,13 +5,7 @@ public enum Grade {
     GRADO2("2"),
     GRADO3("3"),
     GRADO4("4"),
-    GRADO5("5"),
-    GRADO6("6"),
-    GRADO7("7"),
-    GRADO8("8"),
-    GRADO9("9"),
-    GRADO10("10"),
-    GRADO11("11");
+    GRADO5("5");
 
     private final String value;
 

@@ -3,6 +3,7 @@ package co.com.sofka.page.orangehrmpaygrades;
 import co.com.sofka.model.orangehrmpaygrades.OrangehrmPayGradesModel;
 import co.com.sofka.page.common.CommonActionsOnPages;
 
+import co.com.sofka.util.Divisas;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -47,7 +48,6 @@ public class OrangehrmPayGrades extends CommonActionsOnPages{
     @CacheLookup
     private WebElement subPayGrades;
 
-    private final By grade = By.xpath("//*[@id=\"resultTable\"]/tbody/tr[1]/td[2]/a");
 
 
     @FindBy(id = "btnAddCurrency")
@@ -114,16 +114,22 @@ public class OrangehrmPayGrades extends CommonActionsOnPages{
             //scrollTo(subPayGrades);
             withExplicitWaitClickOn(subPayGrades);
 
+            By grade = By.xpath("//*[@id=\"resultTable\"]/tbody/tr["+orangehrmPayGradesModel.getGrado()+"]/td[2]/a");
             //scrollTo(grade);
             withExplicitWaitClickOn(grade);
 
-            //scrollTo(btnAddCurrency);
+            if(isAddDone(orangehrmPayGradesModel.getMoneda())){
+                orangehrmPayGradesModel.setMoneda(Divisas.CAD.randomDivisa());
+            }
+
+            scrollTo(btnAddCurrency);
             withExplicitWaitClickOn(btnAddCurrency);
 
             scrollTo(moneda);
             withExplicitWaitClear(moneda);
             withExplicitWaitTypeInto(moneda, orangehrmPayGradesModel.getMoneda());
             withExplicitWaitTypeInto(moneda, Keys.TAB);
+
 
             scrollTo(minSalary);
             withExplicitWaitClear(minSalary);
@@ -142,6 +148,10 @@ public class OrangehrmPayGrades extends CommonActionsOnPages{
             LOGGER.warn(exception.getMessage());
         }
     }
+
+
+
+
 
     public List<WebElement> getResultTable(String idLista){
         WebElement table = findElement(By.id(idLista));

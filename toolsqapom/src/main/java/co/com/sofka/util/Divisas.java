@@ -1,5 +1,7 @@
 package co.com.sofka.util;
 
+import java.util.Random;
+
 public enum Divisas {
     AFN("Afghanistan Afghani"),
     ALL("Albanian Lek"),
@@ -21,6 +23,11 @@ public enum Divisas {
 
     public String getValue() {
         return value;
+    }
+
+    public Divisas randomDivisa() {
+        int pick = new Random().nextInt(Divisas.values().length);
+        return Divisas.values()[pick];
     }
 
 }

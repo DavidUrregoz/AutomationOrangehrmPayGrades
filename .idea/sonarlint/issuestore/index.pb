@@ -1,25 +1,3 @@
 
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 r
 Btoolsqapom/src/main/java/co/com/sofka/page/common/BaseSikulix.java,a\9\a91519cf3ca2d90f79a202d0e293b520cc591c5c
-G
-toolsqapom/build.gradle,b\f\bf59ac894a9a282074adb0b3dc9e4f36ab99b9c5
-á
-Wtoolsqapom/src/main/java/co/com/sofka/model/orangehrmpaygrades/OrangehrmLoginModel.java,7\a\7a9794938775a8b896777913fd9fdb903efac321
-e
-5toolsqapom/src/main/java/co/com/sofka/util/Grade.java,7\e\7e5a367b72f1a73482c15f5cb7b54fe7213bfb60
-g
-7toolsqapom/src/main/java/co/com/sofka/util/Divisas.java,a\5\a5e0b0eaaf2e27b0ad4e51f3e681b20e09b366bd
-{
-Ktoolsqapom/src/main/java/co/com/sofka/page/common/CommonActionsOnPages.java,2\1\212d90282b0d25bfc01acd3eaf099ba57ab6989d
-ã
-[toolsqapom/src/main/java/co/com/sofka/model/orangehrmpaygrades/OrangehrmPayGradesModel.java,5\5\553ca166be63e3206803b7af415df631037aff45
-Å
-Qtoolsqapom/src/main/java/co/com/sofka/page/orangehrmpaygrades/OrangehtmLogin.java,6\2\62c50b3ffa82c12ccbdab978922fbe7305a4f7b4
-Ö
-Utoolsqapom/src/main/java/co/com/sofka/page/orangehrmpaygrades/OrangehrmPayGrades.java,7\f\7f297651b1762f6dd158e330ead319d4d4445303
-ê
-`toolsqapom/src/test/java/co/com/sofka/stepdefinition/orangehrm/opt3/PayGradesStepDefinition.java,a\1\a111347e2eefaec9735371950793bbba81dedb4e
-Ü
-Vtoolsqapom/src/test/java/co/com/sofka/runner/orangehrmpaygrades/PayGradesCucumber.java,f\f\ffcf13506f0c1a42454fca84618c8732fb49f8b5
