@@ -1,6 +1,5 @@
 package co.com.sofka.page.orangehrmpaygrades;
 
-import co.com.sofka.model.orangehrmpaygrades.OrangehrmLoginModel;
 import co.com.sofka.model.orangehrmpaygrades.OrangehrmPayGradesModel;
 import co.com.sofka.page.common.CommonActionsOnPages;
 
@@ -13,6 +12,7 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 
 import java.io.IOException;
+import java.util.List;
 
 
 public class OrangehrmPayGrades extends CommonActionsOnPages{
@@ -69,14 +69,14 @@ public class OrangehrmPayGrades extends CommonActionsOnPages{
     @FindBy(id = "btnSaveCurrency")
     @CacheLookup
     private WebElement btnGuardar;
-
-
-
-    //*[@id="resultTable"]/tbody/tr[1]/td[2]/a
-    //*[@id="resultTable"]/tbody/tr[2]/td[2]/a
-    //*[@id="resultTable"]/tbody/tr[3]/td[2]/a
-
     //For Assertions test case.
+
+    public boolean isAddDone(String divisa){
+        List<WebElement> listaFilas = getResultTable("tblCurrencies");
+        return validateDivisaFiltered(listaFilas,divisa);
+    }
+
+
 
     public OrangehrmPayGrades(WebDriver driver, OrangehrmPayGradesModel orangehrmPayGradesModel) {
         super(driver);
@@ -90,8 +90,6 @@ public class OrangehrmPayGrades extends CommonActionsOnPages{
             LOGGER.warn(MODEL_NULL_MESSAGE);
         this.orangehrmPayGradesModel= orangehrmPayGradesModel;
     }
-
-
 
 
     public void desplegarPayGrades()throws IOException{
@@ -130,22 +128,34 @@ public class OrangehrmPayGrades extends CommonActionsOnPages{
             //scrollTo(btnGuardar);
             withExplicitWaitClickOn(btnGuardar);
 
-            //*[@id="resultTable"]/tbody/tr[1]/td[2]/a
-            //*[@id="resultTable"]/tbody/tr[2]/td[2]/a
-
-
         } catch (Exception exception){
             LOGGER.warn(exception.getMessage());
         }
     }
 
-    public void editarPayGrade()throws IOException{
-        try {
-
-        }catch (Exception exception){
-            LOGGER.warn(exception.getMessage());
-        }
+    public List<WebElement> getResultTable(String idLista){
+        WebElement table = findElement(By.id(idLista));
+        List<WebElement> allRows = table.findElements(By.tagName("tr"));
+        return allRows;
     }
+
+    public boolean validateDivisaFiltered(List<WebElement> allRows, String divisa){
+        for (WebElement row : allRows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            int i = 0;
+            for (WebElement cell : cells) {
+                if(i==1 && cell.getText().equalsIgnoreCase(divisa)){
+                    return true;
+                }
+                i++;
+            }
+        }
+        return false;
+    }
+
+
+
+
 
 
 }
